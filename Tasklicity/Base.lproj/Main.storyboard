@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="fVm-Tr-f7F" kind="show" id="NKm-oo-9ex"/>
+                                    <segue destination="fVm-Tr-f7F" kind="show" identifier="taskSegue" id="NKm-oo-9ex"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -55,24 +55,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="D4h-pX-L2l">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="D4h-pX-L2l" customClass="CustomTableViewCell" customModule="Tasklicity" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D4h-pX-L2l" id="V3d-5c-SnV">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDG-Gb-onQ">
-                                            <rect key="frame" x="0.0" y="6" width="45" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDG-Gb-onQ">
+                                            <rect key="frame" x="0.0" y="6" width="45" height="31.5"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain">
                                                 <imageReference key="image" image="circle" catalog="system" renderingMode="template"/>
                                                 <color key="baseForegroundColor" systemColor="labelColor"/>
                                             </buttonConfiguration>
+                                            <connections>
+                                                <action selector="listRowStateButtonPressed:" destination="D4h-pX-L2l" eventType="touchUpInside" id="HR9-VG-0AQ"/>
+                                            </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oU9-2V-2E8">
+                                            <rect key="frame" x="53" y="6" width="341" height="31.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="341" id="MEG-tf-pKp"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="EDG-Gb-onQ" firstAttribute="top" secondItem="V3d-5c-SnV" secondAttribute="top" constant="6" id="4UQ-7Q-ESp"/>
+                                        <constraint firstItem="EDG-Gb-onQ" firstAttribute="leading" secondItem="V3d-5c-SnV" secondAttribute="leading" id="LcO-2H-p3j"/>
+                                        <constraint firstAttribute="bottom" secondItem="EDG-Gb-onQ" secondAttribute="bottom" constant="6" id="VDc-lH-cOj"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oU9-2V-2E8" secondAttribute="trailing" constant="20" symbolic="YES" id="g0r-h3-hzL"/>
+                                        <constraint firstItem="oU9-2V-2E8" firstAttribute="leading" secondItem="EDG-Gb-onQ" secondAttribute="trailing" constant="8" symbolic="YES" id="lIG-fj-t8p"/>
+                                        <constraint firstItem="oU9-2V-2E8" firstAttribute="top" secondItem="EDG-Gb-onQ" secondAttribute="top" id="xJj-my-f0P"/>
+                                        <constraint firstItem="oU9-2V-2E8" firstAttribute="centerY" secondItem="EDG-Gb-onQ" secondAttribute="centerY" id="zbb-zZ-9Xg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="listRowStateButton" destination="EDG-Gb-onQ" id="avT-sx-Axo"/>
+                                    <outlet property="taskLabel" destination="oU9-2V-2E8" id="55B-M2-9A2"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -80,11 +104,17 @@
                             <outlet property="delegate" destination="fVm-Tr-f7F" id="cn3-bI-ThX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="GK6-xK-ZYe"/>
+                    <navigationItem key="navigationItem" id="GK6-xK-ZYe">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="8gt-qu-f64">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="fVm-Tr-f7F" id="ESL-j3-Vxf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7He-dw-rKk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="19"/>
+            <point key="canvasLocation" x="1802.8985507246377" y="18.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DEz-1J-zoK">

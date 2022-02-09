@@ -9,8 +9,9 @@ import UIKit
 import CoreData
 
 class GroupViewController: UITableViewController {
+	
 	var context: NSManagedObjectContext!
-	var groups = [Group]()
+	private var groups = [Group]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,9 @@ class GroupViewController: UITableViewController {
     }
 
 	@IBAction func addGroupButtonPressed(_ sender: UIBarButtonItem) {
-		let alertController = UIAlertController(title: "Add group", message: "Write gere your group name", preferredStyle: .alert)
+		let alertController = UIAlertController(title: "Add group",
+												message: "Write your group name here",
+												preferredStyle: .alert)
 		alertController.addTextField { textField in
 			textField.placeholder = "Type here"
 		}
@@ -49,13 +52,14 @@ class GroupViewController: UITableViewController {
 			} catch let error as NSError {
 				print(error)
 			}
-			
 		}
+		
 		alertController.addAction(cancelAction)
 		alertController.addAction(doneAction)
 		
 		present(alertController, animated: true)
 	}
+	
 	// MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,13 +67,16 @@ class GroupViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+							numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 		return groups.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskGroupCell", for: indexPath)
+    override func tableView(_ tableView: UITableView,
+							cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskGroupCell",
+												 for: indexPath)
 		
 		var configuration = cell.defaultContentConfiguration()
 		configuration.text = groups[indexPath.row].groupName
@@ -87,7 +94,9 @@ class GroupViewController: UITableViewController {
     */
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+							commit editingStyle: UITableViewCell.EditingStyle,
+							forRowAt indexPath: IndexPath) {
 		guard editingStyle == .delete else { return }
 		context.delete(groups[indexPath.row])
 		groups.remove(at: indexPath.row)
@@ -115,14 +124,15 @@ class GroupViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+		if let indexPath = tableView.indexPathForSelectedRow {
+			let taskViewController = segue.destination as! TaskViewController
+			taskViewController.group = groups[indexPath.row]
+			taskViewController.context = context
+		}
     }
-    */
 
 }

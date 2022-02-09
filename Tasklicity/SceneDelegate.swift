@@ -20,9 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		
 		let navigationController = window?.rootViewController as! UINavigationController
 		let groupViewController = navigationController.topViewController as! GroupViewController
+//		let taskViewController = groupViewController.presentedViewController as! TaskViewController
 		
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 		groupViewController.context = context
+//		taskViewController.context = context
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {
