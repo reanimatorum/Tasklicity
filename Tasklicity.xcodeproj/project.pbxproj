@@ -17,6 +17,8 @@
 		712FE40227B3063100E231EE /* TaskManagementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40127B3063100E231EE /* TaskManagementModel.swift */; };
 		712FE40427B3065100E231EE /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40327B3065100E231EE /* GroupViewController.swift */; };
 		712FE40627B3066700E231EE /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40527B3066700E231EE /* TaskViewController.swift */; };
+		717EC44427BFCDE9001CA3B8 /* ExpirationDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */; };
+		717EC44627BFDEFE001CA3B8 /* ExpirationDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EC44527BFDEFE001CA3B8 /* ExpirationDateModel.swift */; };
 		719C965E27B4140B00DD6A3E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		712FE40127B3063100E231EE /* TaskManagementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagementModel.swift; sourceTree = "<group>"; };
 		712FE40327B3065100E231EE /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		712FE40527B3066700E231EE /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateViewController.swift; sourceTree = "<group>"; };
+		717EC44527BFDEFE001CA3B8 /* ExpirationDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateModel.swift; sourceTree = "<group>"; };
 		719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +82,8 @@
 				712FE40327B3065100E231EE /* GroupViewController.swift */,
 				712FE40527B3066700E231EE /* TaskViewController.swift */,
 				719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */,
+				717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */,
+				717EC44527BFDEFE001CA3B8 /* ExpirationDateModel.swift */,
 			);
 			path = Tasklicity;
 			sourceTree = "<group>";
@@ -158,8 +164,10 @@
 				719C965E27B4140B00DD6A3E /* CustomTableViewCell.swift in Sources */,
 				712FE40027B3062400E231EE /* GroupManagementModel.swift in Sources */,
 				712FE40227B3063100E231EE /* TaskManagementModel.swift in Sources */,
+				717EC44427BFCDE9001CA3B8 /* ExpirationDateViewController.swift in Sources */,
 				712FE3F327B3033C00E231EE /* Tasklicity.xcdatamodeld in Sources */,
 				712FE3E927B3033C00E231EE /* AppDelegate.swift in Sources */,
+				717EC44627BFDEFE001CA3B8 /* ExpirationDateModel.swift in Sources */,
 				712FE3EB27B3033C00E231EE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

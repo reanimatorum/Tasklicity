@@ -11,22 +11,12 @@ import CoreData
 class TaskViewController: UITableViewController {
 
 	var group: Group!
-	var tasks: [Task] = []
 	var context: NSManagedObjectContext!
+	let currentDate = Date()
 		
 	override func viewDidLoad() {
         super.viewDidLoad()
-		
-		
-		let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
 
-		do {
-			let results = try context.fetch(fetchRequest)
-			tasks = results.sorted(by: {Task, Task in
-				(Task.taskName!) > (Task.taskName!)})
-		} catch let error as NSError {
-			print(error)
-		}
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,11 +34,15 @@ class TaskViewController: UITableViewController {
 		}
 		
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-		let doneAction = UIAlertAction(title: "Done", style: .default) { action in
+			let doneAction = UIAlertAction(title: "Done", style: .default) { [self] action in
 			let task = Task(context: self.context)
 			task.taskName = alertController.textFields?.first?.text
 			task.taskIsDone = false
-			self.tasks.append(task)
+			task.taskDate = Date()
+			
+			let tasks = self.group.tasks?.mutableCopy() as? NSMutableOrderedSet
+			tasks?.add(task)
+			self.group.tasks = tasks
 			
 			do {
 				try self.context.save()
@@ -74,7 +68,7 @@ class TaskViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
 							numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-		return tasks.count
+		return group.tasks?.count ?? 0
     }
 	
     override func tableView(_ tableView: UITableView,
@@ -82,16 +76,33 @@ class TaskViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell",
 												 for: indexPath) as! CustomTableViewCell
 		cell.delegate = self
-		cell.taskLabel.text = tasks[indexPath.row].taskName
+		guard let task = group.tasks?[indexPath.row] as? Task else { return cell }
+		cell.taskLabel.text = task.taskName
 		cell.indexPath = indexPath.row
-		cell.task = tasks[indexPath.row]
-		if tasks[indexPath.row].taskIsDone == true {
+		cell.task = task
+		if task.taskIsDone == true {
 			cell.listRowStateButton.setImage(UIImage(systemName: "circle.fill"),
 											 for: .normal)
 		} else {
 			cell.listRowStateButton.setImage(UIImage(systemName: "circle"),
 											 for: .normal)
 		}
+		
+		let calendar = Calendar.current
+		guard let taskDate = task.taskDate else { return cell }
+		let firstDate = calendar.dateComponents(in: .current, from: taskDate)
+		let secondDate = calendar.dateComponents(in: .current, from: currentDate)
+		
+		if firstDate.day != secondDate.day {
+			task.taskIsDone = false
+			
+			do {
+				try context.save()
+				tableView.reloadData()
+			} catch let error as NSError {
+				print(error.localizedDescription)
+			}
+		} else { return cell }
 		
         return cell
     }
@@ -107,10 +118,10 @@ class TaskViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
 							commit editingStyle: UITableViewCell.EditingStyle,
 							forRowAt indexPath: IndexPath) {
-		guard editingStyle == .delete else { return }
-		context.delete(tasks[indexPath.row])
-		tasks.remove(at: indexPath.row)
-		
+		guard let task = group.tasks?[indexPath.row] as? Task,
+			  editingStyle == .delete else { return }
+		context.delete(task)
+
 		do {
 			try context.save()
 			tableView.reloadData()
@@ -149,11 +160,11 @@ class TaskViewController: UITableViewController {
 extension TaskViewController: CustomTableViewCellDelegate {
 	func taskIsChanged(_ cell: CustomTableViewCell) {
 		guard let unwrappedTask = cell.task else { return }
-		self.tasks[cell.indexPath] = unwrappedTask
+		guard let task = group.tasks?[cell.indexPath] as? Task else { return }
+		task.taskIsDone = unwrappedTask.taskIsDone
 		
 		do {
 			try context.save()
-			print("ALLAH BABAH")
 		} catch let error as NSError {
 			print(error)
 		}

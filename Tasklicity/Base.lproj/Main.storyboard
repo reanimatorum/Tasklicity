@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CZX-s3-Ssd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ebl-Yv-tik">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +45,67 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAW-v7-ibO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="19"/>
+            <point key="canvasLocation" x="1960.8695652173915" y="18.75"/>
+        </scene>
+        <!--Сроки-->
+        <scene sceneID="wrs-FD-d28">
+            <objects>
+                <viewController id="nX3-zk-lCH" customClass="ExpirationDateViewController" customModule="Tasklicity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FTx-5G-8Jj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzE-48-ld6">
+                                <rect key="frame" x="20" y="215" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="g4F-Gk-ybk">
+                                <rect key="frame" x="0.0" y="321" width="414" height="216"/>
+                            </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите количество дней" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVQ-IY-jGN">
+                                <rect key="frame" x="20" y="545" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="date-time"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjQ-p3-gez">
+                                <rect key="frame" x="156" y="687" width="102" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Рассчитать"/>
+                                <connections>
+                                    <action selector="countDaysBeforeExpiration:" destination="nX3-zk-lCH" eventType="touchUpInside" id="Oy0-Ph-cf1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YuY-w6-WQm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kzE-48-ld6" firstAttribute="leading" secondItem="YuY-w6-WQm" secondAttribute="leading" constant="20" id="1df-HV-reX"/>
+                            <constraint firstItem="kzE-48-ld6" firstAttribute="top" secondItem="YuY-w6-WQm" secondAttribute="top" constant="171" id="4K6-Kl-gBR"/>
+                            <constraint firstItem="vjQ-p3-gez" firstAttribute="top" relation="lessThanOrEqual" secondItem="wVQ-IY-jGN" secondAttribute="bottom" constant="108" id="5KF-ZG-51m"/>
+                            <constraint firstItem="YuY-w6-WQm" firstAttribute="trailing" secondItem="kzE-48-ld6" secondAttribute="trailing" constant="20" id="QbR-nB-s4t"/>
+                            <constraint firstItem="YuY-w6-WQm" firstAttribute="bottom" secondItem="vjQ-p3-gez" secondAttribute="bottom" constant="95" id="Urt-WP-qS1"/>
+                            <constraint firstItem="YuY-w6-WQm" firstAttribute="trailing" secondItem="wVQ-IY-jGN" secondAttribute="trailing" constant="20" id="bqP-cd-m25"/>
+                            <constraint firstItem="g4F-Gk-ybk" firstAttribute="centerX" secondItem="YuY-w6-WQm" secondAttribute="centerX" id="c94-Ih-Wcd"/>
+                            <constraint firstItem="g4F-Gk-ybk" firstAttribute="centerY" secondItem="YuY-w6-WQm" secondAttribute="centerY" id="cPD-ST-lhP"/>
+                            <constraint firstItem="g4F-Gk-ybk" firstAttribute="width" secondItem="FTx-5G-8Jj" secondAttribute="height" multiplier="207:448" id="cvs-zX-NRf"/>
+                            <constraint firstItem="YuY-w6-WQm" firstAttribute="trailing" secondItem="vjQ-p3-gez" secondAttribute="trailing" constant="156" id="ocH-wO-2k9"/>
+                            <constraint firstItem="vjQ-p3-gez" firstAttribute="leading" secondItem="YuY-w6-WQm" secondAttribute="leading" constant="156" id="s8o-S8-dAz"/>
+                            <constraint firstItem="wVQ-IY-jGN" firstAttribute="leading" secondItem="YuY-w6-WQm" secondAttribute="leading" constant="20" id="wxH-cT-YaW"/>
+                            <constraint firstItem="wVQ-IY-jGN" firstAttribute="top" secondItem="g4F-Gk-ybk" secondAttribute="bottom" constant="8.5" id="z0k-X0-Nw1"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Сроки" image="calendar.badge.clock" catalog="system" id="AGS-Oa-wNt"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="kzE-48-ld6" id="5j4-AP-skY"/>
+                        <outlet property="datePicker" destination="g4F-Gk-ybk" id="FY3-bW-kgB"/>
+                        <outlet property="daysBeforeTextField" destination="wVQ-IY-jGN" id="Lab-qy-le1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nqz-P2-cTj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1189.8550724637682" y="703.79464285714278"/>
         </scene>
         <!--Task View Controller-->
         <scene sceneID="QiF-f8-w5f">
@@ -114,12 +175,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7He-dw-rKk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802.8985507246377" y="18.75"/>
+            <point key="canvasLocation" x="2713.04347826087" y="18.75"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Список задач-->
         <scene sceneID="DEz-1J-zoK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CZX-s3-Ssd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Список задач" image="list.bullet" catalog="system" id="ygK-Iu-3Ey"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a94-gb-B5w">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -132,11 +194,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYY-om-ttS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="279.71014492753625" y="18.75"/>
+            <point key="canvasLocation" x="1189.8550724637682" y="18.75"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="IrH-s9-OK4">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ebl-Yv-tik" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9w5-wx-46f">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="CZX-s3-Ssd" kind="relationship" relationship="viewControllers" id="BE2-8g-tsP"/>
+                        <segue destination="nX3-zk-lCH" kind="relationship" relationship="viewControllers" id="II7-ch-S3x"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1W1-iS-5To" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279.71014492753625" y="366.96428571428572"/>
         </scene>
     </scenes>
     <resources>
+        <image name="calendar.badge.clock" catalog="system" width="128" height="108"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

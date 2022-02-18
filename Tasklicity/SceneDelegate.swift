@@ -18,8 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		guard let _ = (scene as? UIWindowScene) else { return }
 		
-		let navigationController = window?.rootViewController as! UINavigationController
-		let groupViewController = navigationController.topViewController as! GroupViewController
+		let navigationController = window?.rootViewController as! UITabBarController
+		let childNavigationController = navigationController.viewControllers?.first as! UINavigationController
+		guard let groupViewController = childNavigationController.topViewController as? GroupViewController else { return }
 //		let taskViewController = groupViewController.presentedViewController as! TaskViewController
 		
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
