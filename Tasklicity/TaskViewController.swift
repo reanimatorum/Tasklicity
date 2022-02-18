@@ -95,6 +95,7 @@ class TaskViewController: UITableViewController {
 		
 		if firstDate.day != secondDate.day {
 			task.taskIsDone = false
+			task.taskDate = taskDate + 86400
 			
 			do {
 				try context.save()

@@ -9,8 +9,7 @@ import UIKit
 
 class ExpirationDateViewController: UIViewController {
 	
-	var expirationDateCounter = ExpirationDateCounter()
-	var startDate = Date()
+	let expirationDateCounter = ExpirationDateCounter()
 	
 	@IBOutlet var dateLabel: UILabel! {
 		didSet {
@@ -21,15 +20,21 @@ class ExpirationDateViewController: UIViewController {
 	@IBOutlet var daysBeforeTextField: UITextField!
 	
 	@IBAction func countDaysBeforeExpiration(_ sender: UIButton) {
-		guard let daysCounter = daysBeforeTextField.text else { return }
-		guard let tempDateCounter = Int(daysCounter) else { return }
+		guard let daysCounter = daysBeforeTextField.text,
+			  let tempDateCounter = Int(daysCounter) else { return }
+
 		expirationDateCounter.lastDay = expirationDateCounter.expirationCounter(startDate: expirationDateCounter.dateFromDatePicker, days: tempDateCounter)
-		dateLabel.text = expirationDateCounter.lastDay.formatted(date: .long, time: .omitted)
-		print("\(String(describing: expirationDateCounter.lastDay))")
+		dateLabel.text = expirationDateCounter.lastDay.formatted(date: .long,
+																 time: .omitted)
 	}
 
 	@IBAction func datePickerValueIsChanged(_ sender: UIDatePicker) {
-		startDate = sender.date
+		expirationDateCounter.dateFromDatePicker = sender.date
 	}
 	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		self.view.endEditing(true)
+	}
+
 }
