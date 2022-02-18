@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -63,6 +64,9 @@
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="g4F-Gk-ybk">
                                 <rect key="frame" x="0.0" y="321" width="414" height="216"/>
+                                <connections>
+                                    <action selector="datePickerValueIsChanged:" destination="nX3-zk-lCH" eventType="valueChanged" id="HRb-iI-9xP"/>
+                                </connections>
                             </datePicker>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите количество дней" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVQ-IY-jGN">
                                 <rect key="frame" x="20" y="545" width="374" height="34"/>
@@ -90,8 +94,8 @@
                             <constraint firstItem="g4F-Gk-ybk" firstAttribute="centerX" secondItem="YuY-w6-WQm" secondAttribute="centerX" id="c94-Ih-Wcd"/>
                             <constraint firstItem="g4F-Gk-ybk" firstAttribute="centerY" secondItem="YuY-w6-WQm" secondAttribute="centerY" id="cPD-ST-lhP"/>
                             <constraint firstItem="g4F-Gk-ybk" firstAttribute="width" secondItem="FTx-5G-8Jj" secondAttribute="height" multiplier="207:448" id="cvs-zX-NRf"/>
-                            <constraint firstItem="YuY-w6-WQm" firstAttribute="trailing" secondItem="vjQ-p3-gez" secondAttribute="trailing" constant="156" id="ocH-wO-2k9"/>
-                            <constraint firstItem="vjQ-p3-gez" firstAttribute="leading" secondItem="YuY-w6-WQm" secondAttribute="leading" constant="156" id="s8o-S8-dAz"/>
+                            <constraint firstItem="YuY-w6-WQm" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="vjQ-p3-gez" secondAttribute="trailing" constant="156" id="ocH-wO-2k9"/>
+                            <constraint firstItem="vjQ-p3-gez" firstAttribute="leading" relation="lessThanOrEqual" secondItem="YuY-w6-WQm" secondAttribute="leading" constant="156" id="s8o-S8-dAz"/>
                             <constraint firstItem="wVQ-IY-jGN" firstAttribute="leading" secondItem="YuY-w6-WQm" secondAttribute="leading" constant="20" id="wxH-cT-YaW"/>
                             <constraint firstItem="wVQ-IY-jGN" firstAttribute="top" secondItem="g4F-Gk-ybk" secondAttribute="bottom" constant="8.5" id="z0k-X0-Nw1"/>
                         </constraints>
@@ -128,7 +132,7 @@
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain">
                                                 <imageReference key="image" image="circle" catalog="system" renderingMode="template"/>
-                                                <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                <color key="baseForegroundColor" name="AccentColor"/>
                                             </buttonConfiguration>
                                             <connections>
                                                 <action selector="listRowStateButtonPressed:" destination="D4h-pX-L2l" eventType="touchUpInside" id="HR9-VG-0AQ"/>
@@ -219,9 +223,9 @@
         <image name="calendar.badge.clock" catalog="system" width="128" height="108"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

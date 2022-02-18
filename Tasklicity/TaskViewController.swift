@@ -81,7 +81,7 @@ class TaskViewController: UITableViewController {
 		cell.indexPath = indexPath.row
 		cell.task = task
 		if task.taskIsDone == true {
-			cell.listRowStateButton.setImage(UIImage(systemName: "circle.fill"),
+			cell.listRowStateButton.setImage(UIImage(systemName: "circle.inset.filled"),
 											 for: .normal)
 		} else {
 			cell.listRowStateButton.setImage(UIImage(systemName: "circle"),
