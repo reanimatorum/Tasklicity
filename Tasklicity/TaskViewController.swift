@@ -12,20 +12,13 @@ class TaskViewController: UITableViewController {
 
 	var group: Group!
 	var context: NSManagedObjectContext!
-	let currentDate = Date()
+	private let currentDate = Date()
 		
 	override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-		
 	}
 
-		@IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+	@IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
 		let alertController = UIAlertController(title: "Add task",
 												message: "Write your task here",
 												preferredStyle: .alert)
@@ -34,7 +27,7 @@ class TaskViewController: UITableViewController {
 		}
 		
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-			let doneAction = UIAlertAction(title: "Done", style: .default) { [self] action in
+		let doneAction = UIAlertAction(title: "Done", style: .default) { [self] action in
 			let task = Task(context: self.context)
 			task.taskName = alertController.textFields?.first?.text
 			task.taskIsDone = false
@@ -61,13 +54,11 @@ class TaskViewController: UITableViewController {
 	// MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView,
 							numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
 		return group.tasks?.count ?? 0
     }
 	
@@ -107,14 +98,40 @@ class TaskViewController: UITableViewController {
 		
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		
+		guard let task = group.tasks?[indexPath.row] as? Task else { return }
+		
+		let alertController = UIAlertController(title: "Edit task",
+												message: "Write your task here",
+												preferredStyle: .alert)
+		alertController.addTextField { textField in
+			textField.text = task.taskName
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+		let doneAction = UIAlertAction(title: "Done", style: .default) { [self] action in
+			task.taskName = alertController.textFields?.first?.text
+			
+			let tasks = self.group.tasks?.mutableCopy() as? NSMutableOrderedSet
+			tasks?[indexPath.row] = task
+			self.group.tasks = tasks
+			
+			do {
+				try self.context.save()
+				self.tableView.reloadData()
+			} catch let error as NSError {
+				print(error)
+			}
+		}
+		
+		alertController.addAction(cancelAction)
+		alertController.addAction(doneAction)
+		
+		present(alertController, animated: true)
+	}
 
     override func tableView(_ tableView: UITableView,
 							commit editingStyle: UITableViewCell.EditingStyle,
@@ -130,31 +147,6 @@ class TaskViewController: UITableViewController {
 			print(error)
 		}
 	}
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -179,3 +171,5 @@ extension TaskViewController: CustomTableViewCellDelegate {
 		tableView.reloadData()
 	}
 }
+
+//TODO: - Needs to be refactored

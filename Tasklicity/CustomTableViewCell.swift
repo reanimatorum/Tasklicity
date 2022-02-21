@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 protocol CustomTableViewCellDelegate: NSObject {
 	func taskIsChanged(_ cell: CustomTableViewCell)

@@ -9,7 +9,7 @@ import UIKit
 
 class ExpirationDateViewController: UIViewController {
 	
-	let expirationDateCounter = ExpirationDateCounter()
+	private var expirationDateCounter = ExpirationDateCounter()
 	
 	@IBOutlet var dateLabel: UILabel! {
 		didSet {

@@ -13,8 +13,6 @@
 		712FE3F327B3033C00E231EE /* Tasklicity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 712FE3F127B3033C00E231EE /* Tasklicity.xcdatamodeld */; };
 		712FE3F527B3033D00E231EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712FE3F427B3033D00E231EE /* Assets.xcassets */; };
 		712FE3F827B3033D00E231EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712FE3F627B3033D00E231EE /* LaunchScreen.storyboard */; };
-		712FE40027B3062400E231EE /* GroupManagementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE3FF27B3062400E231EE /* GroupManagementModel.swift */; };
-		712FE40227B3063100E231EE /* TaskManagementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40127B3063100E231EE /* TaskManagementModel.swift */; };
 		712FE40427B3065100E231EE /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40327B3065100E231EE /* GroupViewController.swift */; };
 		712FE40627B3066700E231EE /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40527B3066700E231EE /* TaskViewController.swift */; };
 		717EC44427BFCDE9001CA3B8 /* ExpirationDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */; };
@@ -31,8 +29,6 @@
 		712FE3F427B3033D00E231EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		712FE3F727B3033D00E231EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		712FE3F927B3033D00E231EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		712FE3FF27B3062400E231EE /* GroupManagementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementModel.swift; sourceTree = "<group>"; };
-		712FE40127B3063100E231EE /* TaskManagementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagementModel.swift; sourceTree = "<group>"; };
 		712FE40327B3065100E231EE /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		712FE40527B3066700E231EE /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateViewController.swift; sourceTree = "<group>"; };
@@ -77,8 +73,6 @@
 				712FE3F627B3033D00E231EE /* LaunchScreen.storyboard */,
 				712FE3F927B3033D00E231EE /* Info.plist */,
 				712FE3F127B3033C00E231EE /* Tasklicity.xcdatamodeld */,
-				712FE3FF27B3062400E231EE /* GroupManagementModel.swift */,
-				712FE40127B3063100E231EE /* TaskManagementModel.swift */,
 				712FE40327B3065100E231EE /* GroupViewController.swift */,
 				712FE40527B3066700E231EE /* TaskViewController.swift */,
 				719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */,
@@ -162,8 +156,6 @@
 				712FE40427B3065100E231EE /* GroupViewController.swift in Sources */,
 				712FE40627B3066700E231EE /* TaskViewController.swift in Sources */,
 				719C965E27B4140B00DD6A3E /* CustomTableViewCell.swift in Sources */,
-				712FE40027B3062400E231EE /* GroupManagementModel.swift in Sources */,
-				712FE40227B3063100E231EE /* TaskManagementModel.swift in Sources */,
 				717EC44427BFCDE9001CA3B8 /* ExpirationDateViewController.swift in Sources */,
 				712FE3F327B3033C00E231EE /* Tasklicity.xcdatamodeld in Sources */,
 				712FE3E927B3033C00E231EE /* AppDelegate.swift in Sources */,

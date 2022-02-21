@@ -7,16 +7,14 @@
 
 import Foundation
 
-class ExpirationDateCounter {
+struct ExpirationDateCounter {
 
 	var dateFromDatePicker = Date()
-	var dateFormatter = DateFormatter()
-	let dateComponents = DateComponents()
-	let calendar = Calendar.current
 	var lastDay: Date!
 	
 	func expirationCounter(startDate: Date, days: Int) -> Date {
 		let expirationDate = Date(timeInterval: TimeInterval(days * 86400), since: startDate)
 		return expirationDate
 	}
+	
 }
