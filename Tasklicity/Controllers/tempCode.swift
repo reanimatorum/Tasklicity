@@ -1,8 +1,19 @@
+////
+////  tempCode.swift
+////  Tasklicity
+////
+////  Created by Максим Казанцев on 12.07.2022.
+////
 //
-//  tempCode.swift
-//  Tasklicity
+//import Foundation
+//import CoreData
 //
-//  Created by Максим Казанцев on 12.07.2022.
+//class TempCDModel: NSObject {
 //
-
-import Foundation
+//	func performSaveCDContext(with group: Group, task: Task) {
+//
+//		let savedContet
+//
+//	}
+//
+//}

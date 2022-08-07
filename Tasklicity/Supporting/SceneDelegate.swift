@@ -21,11 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		let navigationController = window?.rootViewController as! UITabBarController
 		let childNavigationController = navigationController.viewControllers?.first as! UINavigationController
 		guard let groupViewController = childNavigationController.topViewController as? GroupViewController else { return }
-//		let taskViewController = groupViewController.presentedViewController as! TaskViewController
 		
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		groupViewController.context = context
-//		taskViewController.context = context
+		groupViewController.coreDataModel.context = context
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {

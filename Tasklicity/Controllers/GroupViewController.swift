@@ -10,8 +10,9 @@ import CoreData
 
 class GroupViewController: UITableViewController {
 	
-	var context: NSManagedObjectContext!
-	private var groups = [Group]()
+	var coreDataModel = DataModelInCode(context: NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType), group: Group(), task: Task())
+//	var context: NSManagedObjectContext!
+	var groups: [Group] = []
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,7 @@ class GroupViewController: UITableViewController {
 		let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
 		
 		do {
-			let results = try context.fetch(fetchRequest)
+			let results = try coreDataModel.context.fetch(fetchRequest)
 			groups = results
 		} catch let error as NSError {
 			print(error)
@@ -37,11 +38,11 @@ class GroupViewController: UITableViewController {
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 		let doneAction = UIAlertAction(title: "Done", style: .default) { action in
 			let text = alertController.textFields?.first?.text
-			self.groups.append(Group(context: self.context))
+			self.groups.append(Group(context: self.coreDataModel.context))
 			self.groups.last?.groupName = text
 			
 			do {
-				try self.context.save()
+				try self.coreDataModel.context.save()
 				self.tableView.reloadData()
 			} catch let error as NSError {
 				print(error)
@@ -81,11 +82,11 @@ class GroupViewController: UITableViewController {
 							commit editingStyle: UITableViewCell.EditingStyle,
 							forRowAt indexPath: IndexPath) {
 		guard editingStyle == .delete else { return }
-		context.delete(groups[indexPath.row])
+		coreDataModel.context.delete(groups[indexPath.row])
 		groups.remove(at: indexPath.row)
 		
 		do {
-			try context.save()
+			try coreDataModel.context.save()
 			tableView.reloadData()
 		} catch let error as NSError {
 			print(error)
@@ -97,7 +98,7 @@ class GroupViewController: UITableViewController {
 		if let indexPath = tableView.indexPathForSelectedRow {
 			let taskViewController = segue.destination as! TaskViewController
 			taskViewController.group = groups[indexPath.row]
-			taskViewController.context = context
+			taskViewController.context = coreDataModel.context
 		}
     }
 

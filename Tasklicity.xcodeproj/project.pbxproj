@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7124BBA6287DA9A3009F3819 /* tempCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124BBA5287DA9A3009F3819 /* tempCode.swift */; };
+		7124BBA8287DAB16009F3819 /* temperalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124BBA7287DAB16009F3819 /* temperalDataModel.swift */; };
 		712FE3E927B3033C00E231EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE3E827B3033C00E231EE /* AppDelegate.swift */; };
 		712FE3EB27B3033C00E231EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE3EA27B3033C00E231EE /* SceneDelegate.swift */; };
 		712FE3F027B3033C00E231EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712FE3EE27B3033C00E231EE /* Main.storyboard */; };
@@ -15,12 +17,16 @@
 		712FE3F827B3033D00E231EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712FE3F627B3033D00E231EE /* LaunchScreen.storyboard */; };
 		712FE40427B3065100E231EE /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40327B3065100E231EE /* GroupViewController.swift */; };
 		712FE40627B3066700E231EE /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712FE40527B3066700E231EE /* TaskViewController.swift */; };
+		717DFBC628A01A5800ED6D19 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DFBC528A01A5800ED6D19 /* AlertModel.swift */; };
+		717DFBC828A01A9700ED6D19 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DFBC728A01A9700ED6D19 /* AlertController.swift */; };
 		717EC44427BFCDE9001CA3B8 /* ExpirationDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */; };
 		717EC44627BFDEFE001CA3B8 /* ExpirationDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717EC44527BFDEFE001CA3B8 /* ExpirationDateModel.swift */; };
 		719C965E27B4140B00DD6A3E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7124BBA5287DA9A3009F3819 /* tempCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempCode.swift; sourceTree = "<group>"; };
+		7124BBA7287DAB16009F3819 /* temperalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temperalDataModel.swift; sourceTree = "<group>"; };
 		712FE3E527B3033C00E231EE /* Tasklicity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasklicity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FE3E827B3033C00E231EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		712FE3EA27B3033C00E231EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +37,8 @@
 		712FE3F927B3033D00E231EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712FE40327B3065100E231EE /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		712FE40527B3066700E231EE /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		717DFBC528A01A5800ED6D19 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		717DFBC728A01A9700ED6D19 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateViewController.swift; sourceTree = "<group>"; };
 		717EC44527BFDEFE001CA3B8 /* ExpirationDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateModel.swift; sourceTree = "<group>"; };
 		719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -47,6 +55,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71226A6C27C44B2C0086C16F /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				712FE3E827B3033C00E231EE /* AppDelegate.swift */,
+				712FE3EA27B3033C00E231EE /* SceneDelegate.swift */,
+				712FE3F427B3033D00E231EE /* Assets.xcassets */,
+				712FE3F127B3033C00E231EE /* Tasklicity.xcdatamodeld */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		71226A6D27C44B400086C16F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				712FE3EE27B3033C00E231EE /* Main.storyboard */,
+				712FE3F627B3033D00E231EE /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		71226A6E27C44B640086C16F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				712FE40327B3065100E231EE /* GroupViewController.swift */,
+				712FE40527B3066700E231EE /* TaskViewController.swift */,
+				7124BBA5287DA9A3009F3819 /* tempCode.swift */,
+				717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */,
+				717DFBC728A01A9700ED6D19 /* AlertController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		71226A6F27C44B820086C16F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */,
+				717EC44527BFDEFE001CA3B8 /* ExpirationDateModel.swift */,
+				7124BBA7287DAB16009F3819 /* temperalDataModel.swift */,
+				717DFBC528A01A5800ED6D19 /* AlertModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		712FE3DC27B3033C00E231EE = {
 			isa = PBXGroup;
 			children = (
@@ -66,18 +117,11 @@
 		712FE3E727B3033C00E231EE /* Tasklicity */ = {
 			isa = PBXGroup;
 			children = (
-				712FE3E827B3033C00E231EE /* AppDelegate.swift */,
-				712FE3EA27B3033C00E231EE /* SceneDelegate.swift */,
-				712FE3EE27B3033C00E231EE /* Main.storyboard */,
-				712FE3F427B3033D00E231EE /* Assets.xcassets */,
-				712FE3F627B3033D00E231EE /* LaunchScreen.storyboard */,
+				71226A6F27C44B820086C16F /* Models */,
+				71226A6D27C44B400086C16F /* View */,
+				71226A6E27C44B640086C16F /* Controllers */,
+				71226A6C27C44B2C0086C16F /* Supporting */,
 				712FE3F927B3033D00E231EE /* Info.plist */,
-				712FE3F127B3033C00E231EE /* Tasklicity.xcdatamodeld */,
-				712FE40327B3065100E231EE /* GroupViewController.swift */,
-				712FE40527B3066700E231EE /* TaskViewController.swift */,
-				719C965D27B4140B00DD6A3E /* CustomTableViewCell.swift */,
-				717EC44327BFCDE9001CA3B8 /* ExpirationDateViewController.swift */,
-				717EC44527BFDEFE001CA3B8 /* ExpirationDateModel.swift */,
 			);
 			path = Tasklicity;
 			sourceTree = "<group>";
@@ -157,9 +201,13 @@
 				712FE40627B3066700E231EE /* TaskViewController.swift in Sources */,
 				719C965E27B4140B00DD6A3E /* CustomTableViewCell.swift in Sources */,
 				717EC44427BFCDE9001CA3B8 /* ExpirationDateViewController.swift in Sources */,
+				717DFBC828A01A9700ED6D19 /* AlertController.swift in Sources */,
 				712FE3F327B3033C00E231EE /* Tasklicity.xcdatamodeld in Sources */,
 				712FE3E927B3033C00E231EE /* AppDelegate.swift in Sources */,
+				7124BBA6287DA9A3009F3819 /* tempCode.swift in Sources */,
+				7124BBA8287DAB16009F3819 /* temperalDataModel.swift in Sources */,
 				717EC44627BFDEFE001CA3B8 /* ExpirationDateModel.swift in Sources */,
+				717DFBC628A01A5800ED6D19 /* AlertModel.swift in Sources */,
 				712FE3EB27B3033C00E231EE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

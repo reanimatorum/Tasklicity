@@ -22,7 +22,6 @@ class CustomTableViewCell: UITableViewCell {
 	
 	@IBAction func listRowStateButtonPressed(_ sender: UIButton) {
 		delegate?.taskIsChanged(self)
-		
-		
 	}
+	
 }
