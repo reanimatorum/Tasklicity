@@ -17,8 +17,8 @@ class DataModelInCode {
 	public var context: NSManagedObjectContext
 	public var group: Group
 	public var task: Task
-	public var groupsStorage: [Group]
-	public var transferClosure: (() -> ())?
+	public var groupsStorage: [ Group ]
+	public var transferClosure: (() -> (Void))?
 	
 	init(context: NSManagedObjectContext, group: Group, task: Task, groupStorage: [Group]) {
 		self.context = context
@@ -30,7 +30,7 @@ class DataModelInCode {
 	
 	func saveChanges() {
 		do {
-			try context.save()
+			try self.context.save()
 			//Update TableView here
 		} catch let error as NSError {
 			print("ДА ЁБАНЫЙ  РОТ! \(error)")
