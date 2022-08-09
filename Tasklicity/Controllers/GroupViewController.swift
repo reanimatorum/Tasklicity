@@ -10,8 +10,7 @@ import CoreData
 
 class GroupViewController: UITableViewController {
 	
-	var coreDataModel = DataModelInCode(context: NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType), group: Group(), task: Task())
-//	var context: NSManagedObjectContext!
+	var coreDataModel = DataModelInCode(context: NSManagedObjectContext.init(concurrencyType: .privateQueueConcurrencyType), group: Group(), task: Task(), groupStorage: [Group]())
 	var groups: [Group] = []
 	
     override func viewDidLoad() {
@@ -21,38 +20,25 @@ class GroupViewController: UITableViewController {
 		
 		do {
 			let results = try coreDataModel.context.fetch(fetchRequest)
-			groups = results
+			coreDataModel.groupsStorage = results
 		} catch let error as NSError {
 			print(error)
 		}
+//		NotificationCenter.default.addObserver(self,
+//											   selector: #selector(reloadTableView),
+//											   name: NSNotification.Name(rawValue: "Reload!"),
+//											   object: .none)
     }
 
 	@IBAction func addGroupButtonPressed(_ sender: UIBarButtonItem) {
-		let alertController = UIAlertController(title: "Add group",
-												message: "Write your group name here",
+		let alertWindowObject = AlertController(title: "Add group",
+												message: "Enter group name here",
 												preferredStyle: .alert)
-		alertController.addTextField { textField in
-			textField.placeholder = "Type here"
-		}
+		let alertWindow = alertWindowObject.performAlertWindow(tableView: super.tableView)
+		self.coreDataModel.saveChangedContext(contextType: .editGroupsList)
+		tableView.reloadData()
 		
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-		let doneAction = UIAlertAction(title: "Done", style: .default) { action in
-			let text = alertController.textFields?.first?.text
-			self.groups.append(Group(context: self.coreDataModel.context))
-			self.groups.last?.groupName = text
-			
-			do {
-				try self.coreDataModel.context.save()
-				self.tableView.reloadData()
-			} catch let error as NSError {
-				print(error)
-			}
-		}
-		
-		alertController.addAction(cancelAction)
-		alertController.addAction(doneAction)
-		
-		present(alertController, animated: true)
+		present(alertWindow, animated: true)
 	}
 	
 	// MARK: - Table view data source
@@ -101,7 +87,16 @@ class GroupViewController: UITableViewController {
 			taskViewController.context = coreDataModel.context
 		}
     }
+	
+
 
 }
 
+
+extension GroupViewController {
+	@objc func reloadTableView() {
+			
+		tableView.reloadData()
+	}
+}
 //TODO: - Needs to be refactored
